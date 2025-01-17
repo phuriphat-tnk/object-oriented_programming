@@ -23,20 +23,20 @@ def editdb(table,colum,product_id,val ,id):
     sql = f"UPDATE {table} SET {colum} = %s WHERE {product_id} = %s"
     val_sql = (val,id)
     mycursor.execute(sql,val_sql)
-    database.mydb.commit
+    database.mydb.commit()
     if mycursor.rowcount > 0 :
         return True
     else:
         return False
 #print(editdb("products","stock","product_id",110,112))
 #-------------------------------------#
-def insert_product(product_name,description,price,stock): #ชื่อตารางที่ต้องการจะเพิ่ม
-    sql  = "INSERT INTO products VALUES (%s, %s, %s, %s, %s)"
-    val_sql =(None,product_name,description,price,stock)
-    mycursor.execute(sql,val_sql)
-    database.mydb.commit()
-    if mycursor.rowcount > 0 :
-        return True
-    else:
-        return False
-#print(insert_product("test","ddd",555,777))
+def insert_product(name,des,price,stock):
+        sql = "INSERT INTO product VALUES (%s, %s, %s, %s, %s)"
+        val_sql = (None, name,des,price,stock)
+        mycursor.execute(sql,val_sql)
+        database.mydb.commit()
+        if mycursor.rowcount > 0 :
+            return True
+        else:
+            return False
+        
